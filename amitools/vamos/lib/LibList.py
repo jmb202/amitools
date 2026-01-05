@@ -1,3 +1,4 @@
+from .BsdSocketLibrary import BsdSocketLibrary
 from .DosLibrary import DosLibrary
 from .ExecLibrary import ExecLibrary
 from .IntuitionLibrary import IntuitionLibrary
@@ -14,6 +15,7 @@ from .VamosTestLibrary import VamosTestLibrary
 from .VamosTestDevice import VamosTestDevice
 
 vamos_libs = {
+    "bsdsocket.library": BsdSocketLibrary,
     "dos.library": DosLibrary,
     "exec.library": ExecLibrary,
     "intuition.library": IntuitionLibrary,

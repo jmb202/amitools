@@ -30,6 +30,7 @@ log_utility = logging.getLogger("utility")
 log_math = logging.getLogger("math")
 log_intuition = logging.getLogger("intuition")
 log_timer = logging.getLogger("timer")
+log_bsdsocket = logging.getLogger("bsdsocket")
 
 log_proc = logging.getLogger("proc")
 log_prof = logging.getLogger("prof")
@@ -64,6 +65,7 @@ loggers = [
     log_schedule,
     log_intuition,
     log_timer,
+    log_bsdsocket,
 ]
 
 preset = {log_prof: logging.INFO}
