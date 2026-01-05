@@ -104,4 +104,27 @@ mbuf_adj(mp,req_len)(a0/d0)
 mbuf_pullup(m,len)(a0/d0)
 ProcessIsServer(pr)(a0)
 ObtainServerSocket()()
+* --- Roadshow extensions follow ---
+GetDefaultDomainName(buffer,buffer_size)(a0/d0)
+SetDefaultDomainName(buffer)(a0)
+ObtainRoadshowData(access)(d0)
+ReleaseRoadshowData(list)(a0)
+ChangeRoadshowData(list,name,length,data)(a0/a1/d0/a2)
+RemoveInterface(interface_name,force)(a0/d0)
+gethostbyname_r(name,hp,buf,buflen,he)(a0/a1/a2/d0/a3)
+gethostbyaddr_r(addr,len,type,hp,buf,buflen,he)(a0/d0/d1/a1/a2/d2/a3)
+##bias 762
+##private
+ipf_open(channel)(d0)
+ipf_close(channel)(d0)
+ipf_ioctl(channel,command,buffer)(d0/d1/a0)
+ipf_log_read(channel,buffer,len)(d0/a0/d1)
+ipf_log_data_waiting(channel)(d0)
+ipf_set_notify_mask(channel,mask)(d0/d1)
+ipf_set_interrupt_mask(channel,mask)(d0/d1)
+##public
+freeaddrinfo(ai)(a0)
+getaddrinfo(hostname,servname,hints,res)(a0/a1/a2/a3)
+gai_strerror(errnum)(a0)
+getnameinfo(sa,salen,host,hostlen,serv,servlen,flags)(a0/d0/a1/d1/a2/d2/d3)
 ##end
