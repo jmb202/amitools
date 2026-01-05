@@ -1256,6 +1256,9 @@ class DosLibrary(LibImpl):
 
     def FreeDeviceProc(self, ctx):
         addr = ctx.cpu.r_reg(REG_D1)
+        if addr == 0:
+            # FreeDeviceProc(NULL): nothing to do
+            return
         devproc = AccessStruct(ctx.mem, DevProcStruct, struct_addr=addr)
         vol_lock = devproc.r_s("dvp_Lock")
         if vol_lock != 0:
