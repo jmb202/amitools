@@ -21,7 +21,7 @@ class TimerDevice(LibImpl):
 
         return secs, micros
         """
-        t = time.time()
+        t = time.time() - 252460800  # Offset to 1/1/1978
         secs = int(t)
         micros = t - secs
         micros *= cls.MICRO_HZ
