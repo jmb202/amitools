@@ -79,7 +79,7 @@ class BsdSocketLibrary(LibImpl):
         return self.cnt
 
     def putSock(self, sock):
-        n = 3  # Skip over std{in,out,err}
+        n = 0
         while True:
             if not n in self.socks:
                 self.socks[n] = sock
@@ -601,9 +601,6 @@ class BsdSocketLibrary(LibImpl):
             if l & (1 << i) != 0:
                 if i in self.socks:
                     r.append(self.socks[i])
-                elif 0 <= i <= 2:
-                    # std{in,out,err}
-                    r.append(i)
         return r
 
     def markFdSet(self, mem, lst, addr, sz):
@@ -613,11 +610,7 @@ class BsdSocketLibrary(LibImpl):
             fdset = ULongULongClass(mem, addr)
             l = 0
             for i in range(0, sz):
-                if 0 <= i <= 2 and i in s:
-                    # std{in,out,err}
-                    l = l | (1 << i)
-                    nset += 1
-                elif i in self.socks and self.socks[i] in s:
+                if i in self.socks and self.socks[i] in s:
                     l = l | (1 << i)
                     nset += 1
             fdset.l0.set(l)
